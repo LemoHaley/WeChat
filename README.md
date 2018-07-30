@@ -1,2 +1,2 @@
-# WeChat
-WeChat small program
+# README #
+WeChat small program: Question Test Tool Wechat Mini Apps.
