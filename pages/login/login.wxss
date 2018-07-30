@@ -1,0 +1,208 @@
+page {
+  background: #fff;
+}
+
+.content-login {
+  margin: 0;
+  padding: 0;
+  display: block;
+  color: #4d4d4d;
+}
+
+.loading {
+  width: 26px;
+  height: 26px;
+  margin: 0 auto;
+  margin-top: 6px;
+}
+
+.loading image {
+  width: 26px;
+  height: 26px;
+}
+
+.register-title {
+  padding: 20px 0 20px 18px;
+  text-align: left;
+  color: #0a549a;
+  background: #e6f5fe;
+  font-weight: bold;
+}
+
+.register-second-title {
+  padding: 20px 6% 20px 18px;
+  text-align: left;
+  color: #0a549a;
+  background: #e6f5fe;
+  font-weight: bold;
+  position: relative;
+}
+
+.register-second-title::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  right: 18px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #0a549a;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+
+.section {
+  overflow: hidden;
+  padding: 0 20px;
+  position: relative;
+}
+
+.register-phone,
+.register-password,
+.egister-input,
+.register-input {
+  border: 1px solid #e6f5fe;
+  font-size: 14px;
+  padding: 6px 10px;
+  float: left;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 40px;
+  line-height: 40px;
+}
+
+.register-password input {
+  height: 26px;
+  line-height: 26px;
+}
+
+.register-phone,
+.register-password {
+  padding-left: 46px;
+}
+
+.section-phone .tips,
+.section-password .tips,
+.section-name .tips {
+  padding-left: 4px;
+}
+
+.section-phone .icon,
+.section-password .icon {
+  position: absolute;
+  top: 8px;
+  left: 30px;
+  width: 26px;
+  height: 22px;
+}
+
+.section .icon image {
+  width: 26px;
+  height: 22px;
+}
+
+.section-phone {
+  margin-top: 26px;
+}
+
+text.error {
+  display: block;
+  height: 18px;
+  line-height: 18px;
+  padding: 2px 0 4px;
+  line-height: 20px;
+}
+
+.get-code {
+  border: 1px solid #e6f5fe;
+  font-size: 14px;
+}
+
+.get-code.small {
+  font-size: 12px;
+}
+
+.tips {
+  position: relative;
+  top: -5px;
+  vertical-align: top;
+  color: #0a549a;
+  font-size: 12px;
+}
+
+.register-phone {
+  width: 96%;
+  box-sizing: border-box;
+}
+
+.register-password {
+  width: 60%;
+  margin-right: 3%;
+}
+
+.get-code {
+  width: 33%;
+  padding: 0;
+  margin: 0;
+  height: 40px;
+  line-height: 40px;
+  background-color: #fff;
+  color: #0190d3;
+  float: left;
+}
+
+.get-code::after {
+  border: 0;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  clear: both;
+  padding-top: 2px;
+}
+
+
+.btn-login {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #0190d3;
+  color: #fff;
+  font-size: 16px;
+  height: 48px;
+  line-height: 48px;
+  letter-spacing: 2px;
+}
+
+.btn-login::after {
+  border: 0;
+}
+
+.field {
+  width: 100%;
+  overflow: hidden;
+}
+
+.field-radio {
+  padding-top: 10px;
+}
+
+.section-button {
+  padding-bottom: 30px;
+}
+
+.show-right {
+  text-align: right;
+}
+
+navigator {
+  margin: 10px 20px 0;
+  font-size: 14px;
+  color: #333;
+  display: inline-block;
+}

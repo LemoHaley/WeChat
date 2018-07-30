@@ -1,0 +1,106 @@
+<!--result.wxml-->
+<import src="../wxParse/wxParse.wxml" />
+<view class="container content-result">
+  <view class="section section1">
+    <view class="title">
+      <image src="../../images/test-result1-title.jpg" mode="widthFix"></image>
+    </view>
+    <view class="con">
+      <image src="{{imgurl1}}" mode="widthFix"></image>
+      <view class="con-des">
+        <image src="../../images/test-result-icon.png"></image>
+        <view>
+          <template is="wxParse" data="{{wxParseData:text1.nodes}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="section section2">
+    <view class="title" bindtap="showContent">
+      <image src="../../images/test-result2-title.jpg" mode="widthFix"></image>
+      <view wx:if="{{showContent}}" class="title-icon">
+        <image src="../../images/cma-down.png" mode="widthFix"></image>
+      </view>
+      <view wx:elif="{{!showContent}}" class="title-icon">
+        <image src="../../images/cma-up.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view>
+      <view class="con">
+        <view class="{{showContent ?'':'hasHeight'}} con-list">
+          <block wx:for="{{replyTemArray}}" wx:key="">
+            <view class="con-question">
+              <view class="list-index">{{index+1}}.</view>
+              <view class="list-des">
+                <template is="wxParse" data="{{wxParseData:item}}" />
+              </view>
+            </view>
+            <view class="con-answer">{{questionResult[index].option}}</view>
+          </block>
+        </view>
+        <view>
+          <button bindtap="download">查看详情 以便就医参考</button>
+        </view>
+        <view class="tips">查看详情后如需保存测试结果（建议截屏保存）</view>
+      </view>
+    </view>
+  </view>
+  <view class="section section3">
+    <view class="title">
+      <image src="../../images/test-result3-title.jpg" mode="widthFix"></image>
+    </view>
+    <view>
+      <image src="{{imgurl2}}" mode="widthFix"></image>
+      <view class="con"></view>
+    </view>
+  </view>
+  <view class="section section4">
+    <view class="title">
+      <image src="../../images/test-result4-title.jpg" mode="widthFix"></image>
+    </view>
+    <view>
+      <image src="{{imgurl3}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="section section5">
+    <view class="title">
+      <image src="../../images/test-result5-title.jpg" mode="widthFix"></image>
+    </view>
+    <view>
+      <image bindtap="previewImage" src="{{imgurl4}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <!-- <view class="section" hidden="{{!showEntrance}}">
+    <view>
+      <image bindtap="goNext" src="{{imgurl5}}" mode="widthFix"></image>
+    </view>
+  </view> -->
+  <view class="section">
+    <view>
+      <image bindtap="goNext" src="{{imgurl5}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <view hidden="{{!showPopup}}" class="popup">
+    <view class="popup-overlay"></view>
+    <view class="popup-con">
+      <view class="title">依据测试结果，您宝宝的症状很可能是牛奶蛋白引起的过敏反应。建议您加入美赞臣安敏健妈妈会了解更多牛奶蛋白过敏知识和脱敏指导哦～</view>
+      <view bindtap="cancel" class="btn">我再想想</view>
+      <view bindtap="confirm" class="btn">立即加入</view>
+    </view>
+  </view>
+  <view hidden="{{!showSecPopup}}" class="popup">
+    <view class="popup-overlay"></view>
+    <view class="popup-con">
+      <view class="title">依据测试结果，您宝宝的症状很可能是牛奶蛋白引起的过敏反应。建议您加入美赞臣安敏健妈妈会了解更多牛奶蛋白过敏知识和脱敏指导哦～</view>
+      <view bindtap="secCancel" class="btn">我再想想</view>
+      <view bindtap="secConfirm" class="btn">立即加入</view>
+    </view>
+  </view>
+  <view hidden="{{!showThirdPopup}}" class="popup">
+    <view class="popup-overlay"></view>
+    <view class="popup-con">
+      <view class="title">您已加入美赞臣安敏健妈妈会</view>
+      <view bindtap="thirdCancel" class="btn">OK</view>
+    </view>
+  </view>
+</view>

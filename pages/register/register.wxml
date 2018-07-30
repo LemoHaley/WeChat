@@ -1,0 +1,160 @@
+<!--register.wxml-->
+<view class="container content-register">
+  <view class="register-title">A+妈妈注册登录</view>
+  <view wx:if="{{resError}}" class="error-fixed">{{resError}}
+    <view bindtap="closeInfor" class="close">x</view>
+  </view>
+  <view class="show-right">
+    <navigator url="/pages/login/login" open-type="redirect">我已注册?
+      <text>登录</text>
+    </navigator>
+  </view>
+  <view class="register-con">
+    <form bindsubmit="formSubmit">
+      <view class="section section-phone">
+        <view class="icon">
+          <image src="../../images/register-icon-tel.png" />
+        </view>
+        <input id="phone" name="cellphone" class="register-phone" type="number" placeholder="请输入手机号" bindblur="changePhone" maxlength="11" value="" />
+        <text class="tips">*</text>
+        <text class="error">{{phoneError}}</text>
+      </view>
+      <view class="section section-password">
+        <view class="icon">
+          <image src="../../images/register-icon-pass.png" />
+        </view>
+        <view class="register-password">
+          <input id="password" name="verifycode" type="number" placeholder="请输入验证码" bindchange="changeCode" maxlength="4" />
+        </view>
+        <button class="get-code {{smallText? 'small':''}}" hover-class="code-hover" disabled="{{smallText}}" bindtap="getCode">{{getCode}}</button>
+        <text class="tips">*</text>
+        <text class="error">{{CodeError}}</text>
+      </view>
+      <view class="section section-name">
+        <input id="name" name="name" class="register-input" type="text" placeholder="请输入您的姓名" bindchange="changeName" />
+        <text class="tips">*</text>
+        <text class="error">{{nameError}}</text>
+      </view>
+      <view class="section section-date">
+        <view class="section-title">
+          <text class="tips">*</text>请输入您的预产期或者宝宝生日 </view>
+        <picker mode="date" name="babybirth" value="{{date}}" start="{{beforeYear}}" end="{{afterYear}}" bindchange="changeDate1">
+          <view class="picker">
+            <view class="option">{{years}}</view>
+            <view class="option">{{month}}</view>
+            <view class="option">{{day}}</view>
+          </view>
+        </picker>
+        <text class="error">{{birthError}}</text>
+      </view>
+      <view class="section section-checkbox">
+        <view class="section-title">
+          <text class="tips">*</text>请选择您对宝宝配方奶粉最关注的三大问题（请选择1-3项）</view>
+        <checkbox-group name="attention" bindchange="checkQuestion" class="group-list">
+          <label wx:for-items="{{itemOption1}}" wx:for-item="item" wx:key="index" class="{{item.checked ? 'active':''}}">
+            <view hidden="true">
+              <checkbox value="{{item.key}}" checked="{{item.checked}}" />
+            </view>
+            <view class="icon icon-active">
+              <image src="../../images/register-icon1-active.png" />
+            </view>
+            <view class="icon icon-default">
+              <image src="../../images/register-icon1.png" />
+            </view>
+            {{item.value}}</label>
+        </checkbox-group>
+        <text class="error">{{checkError1}}</text>
+      </view>
+      <view class="section section-radio">
+        <view class="section-title">
+          <text class="tips">*</text>请选择您预备/正在给宝宝使用的奶粉品牌（单选）</view>
+        <radio-group name="intention" bindchange="checkBrand" class="group-list">
+          <label wx:for-items="{{itemOption2}}" wx:for-item="item" wx:key="index" class="{{item.checked ? 'active':''}}">
+            <view hidden="true">
+              <radio value="{{item.key}}" checked="{{item.checked}}" />
+            </view>
+            <view class="icon icon-active">
+              <image src="../../images/register-icon2-active.png" />
+            </view>
+            <view class="icon icon-default">
+              <image src="../../images/register-icon2.png" />
+            </view>
+            {{item.value}}</label>
+        </radio-group>
+        <text class="error">{{checkError2}}</text>
+      </view>
+      <view class="register-second">
+        <view class="register-second-title" bindtap="clickShow">我有二胎宝宝</view>
+        <view class="register-second-con" hidden="{{showContent}}">
+          <view class="field">
+            <view class="field-title">请输入您的预产期或者宝宝生日 </view>
+            <picker mode="date" name="secbabybirth" value="{{date}}" start="{{beforeYear}}" end="{{afterYear}}" bindchange="changeDate2">
+              <view class="picker">
+                <view class="option">{{secYears}}</view>
+                <view class="option">{{secMonth}}</view>
+                <view class="option">{{secDay}}</view>
+              </view>
+            </picker>
+            <text class="error">{{birthError2}}</text>
+          </view>
+          <view class="field field-checkbox">
+            <view class="field-title">请选择您对宝宝配方奶粉最关注的三大问题（请选择1-3项）</view>
+            <checkbox-group name="secAttention" bindchange="seCheckQuestion" class="group-list">
+              <label wx:for-items="{{itemOption3}}" wx:for-item="item" wx:key="index" class="{{item.checked ? 'active':''}}">
+                <view hidden="true">
+                  <checkbox value="{{item.key}}" checked="{{item.checked}}" />
+                </view>
+                <view class="icon icon-active">
+                  <image src="../../images/register-icon1-active.png" />
+                </view>
+                <view class="icon icon-default">
+                  <image src="../../images/register-icon1.png" />
+                </view>
+                {{item.value}}</label>
+            </checkbox-group>
+            <text class="error">{{checkError3}}</text>
+          </view>
+          <view class="field field-radio">
+            <view class="field-title">请选择您预备/正在给宝宝使用的奶粉品牌（单选）</view>
+            <radio-group name="secIntention" class="group-list" bindchange="checkRadio">
+              <label wx:for-items="{{itemOption4}}" wx:for-item="item" wx:key="index" class="{{item.checked ? 'active':''}}">
+                <view hidden="true">
+                  <radio value="{{item.key}}" checked="{{item.checked}}" />
+                </view>
+                <view class="icon icon-active">
+                  <image src="../../images/register-icon2-active.png" />
+                </view>
+                <view class="icon icon-default">
+                  <image src="../../images/register-icon2.png" />
+                </view>
+                {{item.value}}</label>
+            </radio-group>
+            <text class="error">{{checkError4}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="section section-agree">
+        <checkbox-group name="agree" bindchange="agreeCheck" class="group-list">
+          <label class="{{checkVal==1?'active':''}}">
+            <view hidden="true">
+              <checkbox value="1" checked="checked" />
+            </view>
+            <view class="icon icon-active">
+              <image src="../../images/register-icon3-active.png" />
+            </view>
+            <view class="icon icon-default">
+              <image src="../../images/register-icon3.png" />
+            </view>
+            我愿意成为美赞臣会员，愿意接受来自美赞臣公司的资讯并接受美赞臣A+妈妈会《会员服务条款》</label>
+        </checkbox-group>
+        <text class="error">{{agreeError}}</text>
+      </view>
+      <view class="section-button">
+        <button class="btn_register" formType="submit">注册</button>
+        <view wx:if="{{showLoading}}" class="loading">
+          <image src="../../images/loading.gif"></image>
+        </view>
+      </view>
+    </form>
+  </view>
+</view>

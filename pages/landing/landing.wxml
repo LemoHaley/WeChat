@@ -1,0 +1,89 @@
+<!--landing.wxml-->
+<import src="../wxParse/wxParse.wxml" />
+<view class="container content-landing">
+  <form bindsubmit="formSubmit">
+    <view class="section-con">
+      <view class="landing-title">
+        <text>背景小调查</text>
+      </view>
+      <view class="landing-des">
+        <text class="landing-des-title">您和宝宝的饮食</text>
+        <text class="landing-des-tips">(请在以下两个小题中任选一题做答) </text>
+      </view>
+      <view class="section">
+        <view class="section-title">
+          <view class="title">纯母乳喂养</view>
+          <view class="title-des">
+            <template is="wxParse" data="{{wxParseData:question1.nodes}}" />
+          </view>
+        </view>
+        <view class='form-group'>
+          <radio-group name="full_breast_milk_feed" bindchange="radioCheckedChange1">
+            <label class="{{radioCheckVal1==1?'active':''}}">
+              <view hidden="{{radioHidden}}">
+                <radio value="1" />
+              </view>是</label>
+            <label class="{{radioCheckVal1==2?'active':''}}">
+              <view hidden="{{radioHidden}}">
+                <radio value="2" />
+              </view>否</label>
+            <view class="section-title">
+              <view class="title">非纯母乳喂养</view>
+              <view class="title-des">
+                <template is="wxParse" data="{{wxParseData:question2.nodes}}" />
+              </view>
+            </view>
+            <label class="{{radioCheckVal1==3?'active':''}}">
+              <view hidden="{{radioHidden}}">
+                <radio value="3" />
+              </view>是</label>
+            <label class="{{radioCheckVal1==4?'active':''}}">
+              <view hidden="{{radioHidden}}">
+                <radio value="4" />
+              </view>否</label>
+          </radio-group>
+        </view>
+      </view>
+      <view class="section">
+        <view class="section-title">
+          <view class="has-border"></view>
+          <view class="title">家族成员过敏史</view>
+          <view class="title-des">
+            <template is="wxParse" data="{{wxParseData:question3.nodes}}" />
+          </view>
+        </view>
+        <view class='form-group'>
+          <radio-group name="family_allergy" bindchange="radioCheckedChange2">
+            <label class="{{radioCheckVal2==1?'active':''}}">
+              <view hidden="{{radioHidden}}">
+                <radio value="1" />
+              </view>是</label>
+            <label class="{{radioCheckVal2==2?'active':''}}">
+              <view hidden="{{radioHidden}}">
+                <radio value="2" />
+              </view>否</label>
+          </radio-group>
+        </view>
+      </view>
+    </view>
+    <view class="landing-bottom-des">
+      <text>在正式的自测前,需要您回答以上问题</text>
+    </view>
+    <view class="landing-bottom-des">
+      <text>有助于得到更加准确的自测结果</text>
+    </view>
+    <view class="section btn-area">
+      <button formType="submit" hover-class="none">进入测试</button>
+      <text class="landing-bottom-tips">牛奶蛋白测试小工具版权归属：美赞臣婴幼儿营养品研发中心</text>
+    </view>
+  </form>
+  <view class="cma-test-popup" hidden="{{modalHidden}}">
+    <view class="cma-pop-content">
+      <view class="cma-pop-con">
+        <view>请您先完成小调查</view>
+        <view>再点击进入测试</view>
+      </view>
+      <text class="close" bindtap="closePopup">X</text>
+    </view>
+  </view>
+</view>
