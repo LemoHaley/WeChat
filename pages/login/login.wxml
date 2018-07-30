@@ -1,0 +1,36 @@
+<!--landing.wxml-->
+<view class="container content-login">
+  <view class="register-title">A+妈妈会员登录</view>
+  <view class="register-con">
+    <form bindsubmit="formSubmit">
+      <view class="section section-phone">
+        <view class="icon">
+          <image src="../../images/register-icon-tel.png" />
+        </view>
+        <input id="phone" name="cellphone" class="register-phone" type="number" placeholder="请输入手机号" bindchange="changePhone" maxlength="11" value="" />
+        <text class="tips">*</text>
+        <text class="error">{{phoneError}}</text>
+      </view>
+      <view class="section section-password">
+        <view class="icon">
+          <image src="../../images/register-icon-pass.png" />
+        </view>
+        <view class="register-password">
+          <input id="password" name="verifycode" type="number" placeholder="请输入验证码" bindchange="changeCode" maxlength="4" />
+        </view>
+        <button class="get-code {{smallText? 'small':''}}" hover-class="code-hover" disabled="{{smallText}}" bindtap="getCode">{{getCode}}</button>
+        <text class="tips">*</text>
+        <text class="error">{{CodeError}}</text>
+      </view>
+      <view class="section-button">
+        <button class="btn-login" formType="submit">登录</button>
+        <view wx:if="{{showLoading}}" class="loading">
+          <image src="../../images/loading.gif"></image>
+        </view>
+        <view class="show-right">
+          <navigator url="/pages/register/register" open-type="redirect">注册?</navigator>
+        </view>
+      </view>
+    </form>
+  </view>
+</view>

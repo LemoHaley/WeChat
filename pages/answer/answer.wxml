@@ -1,0 +1,34 @@
+<!--answer.wxml-->
+<import src="../wxParse/wxParse.wxml" />
+<view class="container qa-conatiner">
+  <form bindsubmit="formSubmit">
+    <view class='form-item' wx:for="{{questionTemArray}}" wx:for-item="item" wx:key="index" hidden="{{ index == questionIndex ? !showQuestionlist: showQuestionlist }}">
+      <view class="question">
+        <text>第{{index+1}}题</text>
+      </view>
+      <view class="title">
+        <template is="wxParse" data="{{wxParseData:item}}" />
+      </view>
+      <view class='form-group'>
+        <view class='btn-list' wx:for="{{postList[index].options}}" wx:for-index="optionIndex" wx:for-item="optionIndex" wx:key="optionIndex">
+          <text class="{{postList[index].currentItem == optionIndex ?'active':''}} btn" bindtap="btnOpClick" data-id="{{postList[index].id}}" data-as="{{optionIndex}}">{{postList[index].options[optionIndex]}}</text>
+        </view>
+      </view>
+      <view class="form-description" wx:if="{{postList[index].description.length}}" wx:for="{{postList[index].description}}" wx:for-index="index" wx:for-item="item" wx:key="item">
+        <text class="left">{{item.left}}</text>
+        <text class="right">{{item.right}}</text>
+      </view>
+    </view>
+    <view hidden="{{showSubmit}}">
+      <button class="questionSubmit {{showSubmitActive ? 'active':'default'}}" formType="submit" disabled="{{showSubmitActive ? false:true}}">查看结果</button>
+    </view>
+    <view hidden="{{loadingResult}}">
+      <button class="generation">结果正生成中</button>
+    </view>
+    <view hidden="{{loadingResult}}" class="fixed"></view>
+    <view class="error" hidden="{{!errorMes}}">你有未完成答题</view>
+    <view hidden="{{showPreviousQuestion}}" class="previous" bindtap="previousQuestion">
+      <image src="../../images/cma-previous.png"></image>
+    </view>
+  </form>
+</view>

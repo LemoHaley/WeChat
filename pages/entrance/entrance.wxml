@@ -1,0 +1,12 @@
+<!--entrance.wxml-->
+<!-- <view wx:if="{{showLoading}}" class="loading">
+  <image src="../../images/loading.gif"></image>
+</view> -->
+<loading wx:if="{{showLoading}}">加载中</loading>
+<view class="container content-landing" wx:if="{{!showLoading}}">
+  <image class="image_frame" src="{{imgurl}}" mode="scaleToFill"></image>
+  <view class="testNow" bindtap="testNow">立即测试</view>
+  <view wx:if="{{getInfor}}">
+    <button class="testNow" wx:if="{{getInfor}}" open-type="getUserInfo" bindgetuserinfo="userInfoHandler">立即测试</button>
+  </view>
+</view>
